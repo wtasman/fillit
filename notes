@@ -1,0 +1,249 @@
+Overview:
+	a valid tetrimino has 4 lines of 4 characters followed by a \n
+	....
+	..##
+	.##.
+	....
+
+	That means each tetrimino can be represented in 16 bits 17 with that newline
+	but you could read until the newline and then cut ignore don't use the \n
+	using unsigned short has 16 bits
+	maybe use a full 64 bits and represent 4 different tetriminos
+
+	There are a max of (16 * 26) = 416 bits
+
+	No rotations each one is considered different
+
+
+
+Required functions:
+	is_valid()
+		reads the file in
+		checks whether the input string is formatted (only '.', '\n', '#')
+		checks whether the input string has 4 blocks all connected
+		checks whether multiple tetriminos are separated by empty line
+		return 1 or 0 valid or invalid
+	count_tetriminos()
+		counts the newlines and divides by 5 
+		only called after is_valid
+		used to find the amount of memory to allocate
+	classify()
+		read 16 bits and determine the tetrimino
+		you could use a short and compare to the valid representation's number
+		subfunctions{that check if it can be classified.}
+
+	Ignore transpose, once they've been identified, keep a running total of each type 
+	then have a solve function passed in the types as an array and return bruteforced value.
+	solve()
+		take in a struct with the number of each type 
+		use bitwise operations to bruteforce all solutions starting one piece at a time.
+
+
+
+Different Tetriminos
+
+Straight 
+####
+....
+....
+....
+
+horizontal valid binary representations: 
+1111000000000000 - 61440
+0000111100000000 - 3840
+0000000011110000 - 240
+0000000000001111 - 15
+
+#...
+#...
+#...
+#...
+
+vertical valid binary representations:
+1000100010001000 - 34952
+0100010001000100 - 17476
+0010001000100010 - 8738
+0001000100010001 - 4369
+
+
+Square
+##..
+##..
+....
+....
+
+square valid binary representations:
+1100110000000000 - 52224
+0110011000000000 - 26112
+0011001100000000 - 13056
+0000110011000000 - 3264
+0000011001100000 - 1632
+0000001100110000 - 816
+0000000011001100 - 204
+0000000001100110 - 102
+0000000000110011 - 51
+
+T
+###.
+.#..
+....
+....
+
+1110010000000000 - 58368
+0111001000000000 - 29184
+0000111001000000 - 3648
+0000011100100000 - 1824
+0000000011100100 - 228
+0000000001110010 - 114
+
+#... 
+##..
+#...
+....
+
+1000110010000000 - 35968
+0100011001000000 - 17984
+0010001100100000 - 8992
+0000100011001000 - 2248
+0000010001100100 - 1124
+0000001000110010 - 562
+
+.#..
+##..
+.#..
+....
+
+0100110001000000 - 19520
+0010011000100000 - 9760
+0001001100010000 - 4880
+0000010011000100 - 1220
+0000001001100010 - 610
+0000000100110001 - 305
+
+
+.#..
+###.
+....
+....
+
+0100111000000000 - 19968
+0010011100000000 - 9984
+0000010011100000 - 1248
+0000001001110000 - 624
+0000000001001110 - 78
+0000000000100111 - 39
+
+
+
+
+
+J
+.#..
+.#..
+##..
+....
+
+0100010011000000 - 17600
+0010001001100000 - 8800
+0001000100110000 - 4400
+0000010001001100 - 1100
+0000001000100110 - 550
+0000000100010011 - 275
+
+###.
+..#.
+....
+....
+
+1110001000000000 - 57856
+0111000100000000 - 28928
+0000111000100000 - 3616
+0000011100010000 - 1808
+0000000011100010 - 226
+0000000001110001 - 113
+
+
+##..
+#...
+#...
+....
+
+1100100010000000 - 51328
+0110010001000000 - 25664
+0011001000100000 - 12832
+0000110010001000 - 3208
+0000011001000100 - 1604
+0000001100100010 - 802
+
+
+
+
+
+#...
+###.
+....
+....
+
+1000111000000000 - 36352
+0100011100000000 - 18176
+0000100011100000 - 2272
+0000010001110000 - 1136
+0000000010001110 - 142
+0000000001000111 - 71
+
+L
+#...
+#...
+##..
+....
+
+###.
+#...
+....
+....
+
+##..
+.#..
+.#..
+....
+
+..#.
+###.
+....
+....
+
+S
+.##.
+##..
+....
+....
+
+#...
+##..
+.#..
+....
+
+Z
+##..
+.##.
+....
+....
+
+.#..
+##..
+#...
+....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
