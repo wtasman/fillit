@@ -6,7 +6,7 @@ char *get_last_tetrimino(char *str)
 	ret = ft_strnew(17);
 	while (str[i])
 	{
-		if str(str[i]=='\n')
+		if (str(str[i]=='\n')
 			i++;
 		if(str[i]=='#')
 			ret[j] = '1';
