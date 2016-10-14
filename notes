@@ -27,6 +27,11 @@ Required functions:
 		counts the newlines and divides by 5 
 		only called after is_valid
 		used to find the amount of memory to allocate
+	
+
+Build a function that can read 16 digits of . and # into a string
+
+	
 	classify()
 		read 16 bits and determine the tetrimino
 		you could use a short and compare to the valid representation's number
@@ -37,6 +42,84 @@ Required functions:
 	solve()
 		take in a struct with the number of each type 
 		use bitwise operations to bruteforce all solutions starting one piece at a time.
+
+
+
+READ IN FILE WHICH MUST BE LESS THAN 512 bits
+	pass the string to is_valid
+	is_valid checks validity and passes the substring(defined as the string with bad characters removed) 
+	of each tetrimino to ft_btoi(which will return an unsigned short) then to classify
+		classify will return the type of the tetrimino as an index to an array of structures
+		is_valid will need to iterate the count at the array of structure's index
+	if is_valid breaks return the usage message and exit
+	if is_valid reaches the null terminater, pass the struct to solve.
+	
+	
+
+
+IS_VALID NEEDS THE FULL INPUT STRING
+
+CLASSIFY NEEDS THE SUBSTRING THAT REPRESENTS A TETRIMINO
+	classify returns an index to an array of structs which represents the type and count
+which is_valid will then iterate
+
+after is_valid completes reading and parsing pass the array to solve
+
+SOLVE NEEDS THE TYPE OF TETRIMINO & THE NUMBER OF THAT TYPE 
+19 different types
+
+
+
+
+
+
+TETRIMINO STRUCT//89 different bitmaps of valid tetriminoes
+	T STRUCT
+		t-types
+			a
+				a1
+					bitmap unsigned short
+					count
+				a2
+				a3
+				a4
+				a5
+			b
+				b1
+				b2
+				b3
+				b4
+				b5
+			c
+				c1
+				c2
+				c3
+				c4
+				c5
+			d
+				d1
+				d2
+				d3
+				d4
+				d5
+			e
+				e1
+				e2
+				e3
+				e4
+				e5
+	
+	SQUARE STRUCT
+		square-types//9 valid
+	STRAIGHT STRUCT
+		straight-vertical//4 valid
+		straight-horizontal//4 valid
+	LJ STRUCT
+		l-types//24 valid
+		j-typesa//24 valid
+	SZ STRUCT
+		s-types//12 valid
+		z-types//12 valid
 
 
 
