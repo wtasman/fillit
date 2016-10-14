@@ -44,6 +44,124 @@ Build a function that can read 16 digits of . and # into a string
 		use bitwise operations to bruteforce all solutions starting one piece at a time.
 
 
+Solve is passed the array of structs with the type, bitmap(unnecessary because we know the index is arbitrarily assigned), and the count of that type
+
+TETRIMINOES ARE ORDERED IN THE ORDER THEY APPEAR IN THE FILE
+Use recursive backtracking for all bitmaps that intersect 1's or can be &'d 
+the square root of 546 is 23.36664289109584522132436978521608550591760031674932084141...
+so 24 x 24 square is max? see if you can shrink this to save memory
+
+1x1 impossible
+2x2 only possible with a single square tetrimino
+All others can be made with combinations of pieces and empty spots
+
+Since it's a square the height 
+the largest piece is 4 x 1
+
+We need to start in the top left corner with the very first piece and start to build the backtracking
+if it fails, move the first piece to the right by one(so long as it's less than our bitmap size)
+	it's possib
+
+It might be more effective to treat the first piece as the center, then after solving them, find the smallest square.
+Try them all and place them as compact as possible.
+the smallest square the return
+
+AAAA......
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+
+The output bitmap needs to be called SOLUTION
+
+use !& to find whether the piece fits because & returns true if both are 1 and false otherwise
+!& will return false if they're both 1 and true otherwise
+
+use bitshifting to move the default pieces from the top left to the bottom right adding leading 0's
+because there are no two dimensional comparisons of 1d bitmaps. 
+we will use the bitshifting to represent the next potential solution path 
+call recursively passing the bitmap solution which will bitshift if it fails return nothing
+if it fits it becomes a possible solution which can be fed new tetriminoes.
+
+
+	It might be best to use 8 bit descriptions for solve, because the bitshifting is really odd.
+	for instance, it won't work for s or z if the offset 1 gets pushed to the next "line" 
+	do lines even exist? is it alright for them to be offset if you account for it in the square finding?
+
+
+
+Logical stepthrough of recursive backtracking for bitmap with 5x5 with square and l
+
+Call function with square and l
+
+Step 1
+.....
+.....
+.....
+.....
+
+Step 2
+
+AA...
+AA...
+.....
+.....
+.....
+
+AAB..
+AAB..
+.BB..
+.....
+.....
+
+SOLVED! REACHED END OF LIST OF SHAPES
+count the square size 3x3 and return to recursive call
+
+AA.B.
+AA.B.
+..BB.
+
+SOLVED! REACHED END OF LIST OF SHAPES
+count the square size 4x4 and return to recursive call
+
+AA..B
+AA..B
+...BB
+.....
+.....
+
+SOLVED! REACHED END OF LIST OF SHAPES
+count the square size 5x5 and return to recursive call
+
+
+
+
+solve() should:
+
+Call a checking function that determines whether the piece will fit in the potential solution's bitmap.
+If it will fit the recursive function should keep calling itself and move to the next piece
+If it doesn't fit the recursive function should fail and backtrack to the previously valid potential solution's bitmap
+If it reaches the last of the passed in shapes, pass the solution to the size function
+If the size function returns a smaller size than the current solution, return the solution bitmap.
+
+
+Problems I think we may run into:
+Bitshifting the pieces
+	- The potential solution bitmap will probably 24x24 the bitshifting will be a variable.
+	- Bitshifting straights will work fine, but s's and z's l's square's etc will wrap around
+	- This could be solved by ignoring lines and have a function that finds size of square define where the square ends.
+	- Since the solve function will return all valid solutions, 
+		-- a size function will have to draw lines around the piece's edge(which only works if they're labeled ABCDE)
+Wasting time
+	- Attempting to add pieces that are really far away seems really stupid, 
+		but if you don't account for them the pieces from the end of the order won't be able to be at the center.
+
+
 
 READ IN FILE WHICH MUST BE LESS THAN 512 bits
 	pass the string to is_valid
