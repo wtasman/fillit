@@ -6,7 +6,7 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 16:41:26 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/13 18:36:45 by wasman           ###   ########.fr       */
+/*   Updated: 2016/10/14 22:21:24 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ char	*readem(char *arg)
 {
 	char	*buf;
 	int		fd;
-	int		i;
+	int		len;
 
-	i  = 0;
-	buf = (char *)malloc(sizeof(char) * BUF_SIZE);
+	buf = ft_strnew(BUF_SIZE);
 	fd = open(arg, O_RDONLY);
-	read(fd, &buf, BUF_SIZE);
+	len = read(fd, buf, BUF_SIZE);
 	close(fd);
-	buf[BUF_SIZE] = '\0';
 	return (buf);
 }
 
