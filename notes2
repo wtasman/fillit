@@ -1,0 +1,151 @@
+FILLIT
+	-The program will read in a string of text to a BUFFER
+	-The function IS_VALID will check the BUFFER to verify it is composed of valid tetriminoes.
+		-If it is formatted properly after each tetrimino will be passed to a CLASSIFY function.
+			-The classify function will return a type if it matches a valid tetrimino, otherwise it will return an ERROR.
+			-The IS_VALID function will then create a item in a list for the corresponding type returned from CLASSIFY.
+		-If it is NOT formatted properly, or CLASSIFY returns an ERROR the program will print a USAGE MESSAGE and exit.
+		-If it hasn't EXITED then the INPUT can be assumed to be VALID.
+	-If IS_VALID returns a list of items(tetriminoes) then the main function will pass the list to SOLVE.
+	-The function SOLVE will take the item at the beginning of the list(a specific tetrimino) and attempt to place it inside a square.
+		-HOW?!?!?!?!?!!?!?
+		solve(list_item, square)
+		- Attempt to place the item into the square. (call FIT function)
+			-If it is successful//we need to save this as a potential solution
+				-If there are more pieces in the list, then call solve again with the next piece.
+				-If there are no more pieces in the list, return the square (it is complete.)
+			-If it is not successful 
+				-If there are bits to shift, then shift the bits in the char array and call solve again with the bitshifted piece.
+				-If there are no bits left to shift, return an error.
+		-
+		-
+	-SOLVE will return a char **array which will contain the alphabetized tetriminoes.
+	-The main function will print the char **array including newlines, then exit.
+
+
+
+
+
+
+
+
+
+	No longer ordered structurally: 
+		SOLVE is passed a list of items. 
+		Those items can contain a bitmap to represent them, or a char array, however we can represent them to solve the puzzle.
+			give the structs that build them a preset bitmap in a char array 
+			which can be shifted by 1 char to simulate moving the piece when recursively called EX:
+			
+			ITEM BITMAP: 1010\0\0\0\0\0\0\0\0\0\0  Followed by all nulls from strnew
+			POTENTIAL SMALLEST SQUARE: 110000000000000000
+				The first run though solve will fail because of the conflicting 1's in the first place 
+				(ALL THE CONFLICTS SHOULD ONLY CHECK IF THE SQUARE IS 0 BECAUSE THEY WILL HAVE DIFFERENT VALUES(ABC))
+		
+			So we shift the bitmap and the ITEM BITMAP is passed as 01010\0\0\0\0\0\0\0\0\0\0
+			POTENTIAL SMALLEST SQUARE: 110000000000000000
+
+				The second run through will fail as well
+			So we shift the bitmap and the ITEM BITMAP is passed as 001010\0\0\0\0\0\0\0\0\0
+			POTENTIAL SMALLEST SQUARE: 110000000000000000
+
+			Now that should succeed since there are no conflicts.
+				Now that there is a potential solution, we need to call the function with the next shape(item in the list)
+
+
+
+
+		char **array might be most effective.
+
+		Since we can represent them as letters
+
+Depending on the tetrimino, we may need to shift them different amounts.
+Examples:
+
+A vertical straight:
+Bitmap: 1000100010001000
+Representation:
+1000
+1000
+1000
+1000
+
+Shifting by one bit works fine:
+Bitmap: 0100010001000100
+Representation:
+0100
+0100
+0100
+0100
+
+A horizontal straight:
+Bitmap: 1111000000000000
+Representation:
+1111
+0000
+0000
+0000
+0000
+
+Square size needs to be determined before we can decide whether we can shift the bits.
+Horizontal straight can be bitshifted by 1 correctly, 
+so long as it doesn't wrap around(the square's edge is not at the last bit before shifting)
+The null at the end of the char array cannot equal mod box size
+
+
+
+
+HOW TO SHIFT BITS IN A CHAR ARRAY:
+One way to handle the bitshifting is to assign the char array to have the trailing 0's at declaration/initialization.
+EX: 0000000000000000000000000011011
+ptr --------------------------^
+Then have a pointer to the first 1
+If we need to bitshift it, we can decrement the pointer by 1
+EX: ptr-=1;
+
+
+
+HOW TO CHECK IF THE STRING HAS CONFLICTS:
+
+int fit(char *bitmap_str, char *square_str)
+{
+	while (*bitmap_str)
+	{
+		if (*square_str == '1' && *bitmap_str == '1')
+			return 1;//conflict
+		square_str++;
+		bitmap_str++;
+	}
+	return 0;
+}
+
+We might still be able to use an array of structs, just has to be of size 26 and assigned 
+
+
+
+Iterating through a size k box check if the bitmap fits
+Which will show the size of the box
+
+
+Notes from video:
+Find partial solutions that can be extendible
+If it isn't a partial solution remove the element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
