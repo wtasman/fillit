@@ -33,7 +33,7 @@ norm: fclean
 	norminette $(SOURCES)
 
 clean:
-	/bin/rm -f $(OBJ)
+	/bin/rm -f $(NAME)
 
 fclean: clean
 	/bin/rm -f rm $(NAME)

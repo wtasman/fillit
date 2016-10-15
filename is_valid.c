@@ -53,7 +53,7 @@ int is_valid(char *str)
 				return 0;
 			blockcount = 0;//reset count for next tetrimino
 			tetcount++;
-			tetriminoes[classify(ft_btoi(get_last_tetrimino(ft_strsub(str, i-16, 16))))].count += 1;
+			tetriminoes[classify(ft_btoi(get_last_tetrimino(ft_strsub(str, i-15, 16))))].count += 1;
 			//i counter might be off by 1	
 		}
 		if(str[i] == '#')//count the tetrimino block
