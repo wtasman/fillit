@@ -6,11 +6,11 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 16:41:26 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/14 22:21:24 by wasman           ###   ########.fr       */
+/*   Updated: 2016/10/15 01:12:34 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
 char	*readem(char *arg)
 {
@@ -23,11 +23,4 @@ char	*readem(char *arg)
 	len = read(fd, buf, BUF_SIZE);
 	close(fd);
 	return (buf);
-}
-
-int	main(int argc, char	**argv)
-{
-	if (argc == 2)
-		ft_putstr(readem(argv[1]));
-	return (0);
 }

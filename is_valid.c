@@ -1,12 +1,18 @@
+#include "fillit.h"
+
 char *get_last_tetrimino(char *str)
 {
 	//remove newlines  and swap # and . for 1 and 0
 	char *ret;
+	int	i;
+	int j;
 
+	i = 0;
+	j = 0;
 	ret = ft_strnew(17);
 	while (str[i])
 	{
-		if (str(str[i]=='\n')
+		if (str[i]=='\n')
 			i++;
 		if(str[i]=='#')
 			ret[j] = '1';
@@ -27,7 +33,7 @@ int is_valid(char *str)
 	int j;
 	int blockcount;
 	int tetcount;
-	subtypes tetriminoes[19];
+	struct subtypes tetriminoes[19];
 
 	i = 0;
 	j = 0;
@@ -47,16 +53,8 @@ int is_valid(char *str)
 				return 0;
 			blockcount = 0;//reset count for next tetrimino
 			tetcount++;
-			tetriminoes[classify(ft_btoi(get_last_tetrimino(ft_substr(str[i-16],16))))].count += 1;
-			//i counter might be off by 1
-			
-		
-		
-		
-		
-		
-		
-		
+			tetriminoes[classify(ft_btoi(get_last_tetrimino(ft_strsub(str, i-16, 16))))].count += 1;
+			//i counter might be off by 1	
 		}
 		if(str[i] == '#')//count the tetrimino block
 			blockcount++;
@@ -64,4 +62,11 @@ int is_valid(char *str)
 	}
 	//need to check somehow that it returns 0 if it gets to a null before the empty
 	return tetcount;//returns the number of tetriminos or 0 if invalid.
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 2)
+		is_valid(readem(argv[1]));
+	return (0);
 }

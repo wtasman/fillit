@@ -6,11 +6,11 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:45:14 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/13 16:09:46 by wasman           ###   ########.fr       */
+/*   Updated: 2016/10/15 01:40:00 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
 unsigned short	ft_btoi(char *str)
 {
@@ -27,11 +27,4 @@ unsigned short	ft_btoi(char *str)
 		i++;
 	}
 	return (nbr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
-		ft_putnbr(ft_btoi(argv[1]));
-	return (0);
 }

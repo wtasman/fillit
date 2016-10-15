@@ -12,19 +12,20 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = fillit
-BLDLIB = ar rc
-SORT = ranlib
 
-SOURCES = 
+SOURCES =	libft.a\
+			read.c\
+			test.c\
+			ft_btoi.c\
+			is_valid.c\
+			classify.c
 
 OBJ =	$(SOURCES:.c=.o)
 
 .PHONY: all norm clean fclean re
 
 $(NAME):
-	$(CC) -c $(CFLAGS) $(SOURCES)
-	$(BLDLIB) $(NAME) $(OBJ)
-	$(SORT) $(NAME)
+	$(CC) $(CFLAGS) $(SOURCES) -o $(NAME)
 
 all: $(NAME)
 

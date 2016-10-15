@@ -1,8 +1,4 @@
-nt is_right_t(unsigned short tet)struct subtypes
-{
-	char *name;
-	int count;
-};
+#include "fillit.h"
 
 int is_square(unsigned short tet)
 {

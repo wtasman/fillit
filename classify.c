@@ -2,28 +2,7 @@
 //loop through all 19 and while it equals -1 keep looping until the end
 //if it breaks return the return of the function at i
 //
-
-int is_square(unsigned short tet);
-int is_vertical_straight(unsigned short tet);
-int is_horizontal_straight(unsigned short tet);
-int is_normal_t(unsigned short tet);
-int is_left_t(unsigned short tet);
-int is_right_t(unsigned short tet);
-int is_upside_down_t(unsigned short tet);
-int is_normal_j(unsigned short tet);
-int is_downward_j(unsigned short tet);
-int is_upside_down_j(unsigned short tet);
-int is_upward_j(unsigned short tet);
-int is_normal_z(unsigned short tet);
-int is_rotated_z(unsigned short tet);
-int is_normal_s(unsigned short tet);
-int is_rotated_s(unsigned short tet);
-int is_normal_l(unsigned short tet);
-int is_upward_l(unsigned short tet);
-int is_upside_down_l(unsigned short tet);
-int is_downward_l(unsigned short tet);
-
-
+#include "fillit.h"
 
 int (*p[19]) (unsigned short);
 
@@ -55,5 +34,4 @@ int classify(unsigned short value)
 	while(((*p[i]) (value))==-1)
 		i++;
 	return ((*p[i]) (value));
-
 }
