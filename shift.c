@@ -6,12 +6,12 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 12:25:39 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/19 14:03:40 by wasman           ###   ########.fr       */
+/*   Updated: 2016/10/19 15:47:27 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-:
+
 char	*shift(char *tet)
 {
 	int	max;
@@ -31,12 +31,13 @@ char	*shift(char *tet)
 	tmp = ft_memset(tmp, '0', len);
 	if (tet[len] != '1')
 	{
-		while(tmp[i+1] != '\0')
+		while(tmp[i + 1] != '\0')
 		{
-			tmp[i + 1] = tet[i];
+			tmp[i] = tet[i];
 			i++;
 		}
 		return (tmp);
 	}
 	return (NULL);
 }
+
