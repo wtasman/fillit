@@ -6,7 +6,7 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 16:41:26 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/15 01:12:34 by wasman           ###   ########.fr       */
+/*   Updated: 2016/10/20 16:42:27 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,22 @@ char	*readem(char *arg)
 	int		len;
 
 	buf = ft_strnew(BUF_SIZE);
-	fd = open(arg, O_RDONLY);
-	len = read(fd, buf, BUF_SIZE);
-	close(fd);
+	if (buf == NULL)
+		return (NULL);
+	if ((fd = open(arg, O_RDONLY)) == -1)
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
+	if ((len = read(fd, buf, BUF_SIZE)) == -1)
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
+	if ((close(fd) == -1))
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
 	return (buf);
 }
