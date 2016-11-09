@@ -6,7 +6,7 @@
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 16:41:26 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/20 16:42:27 by wasman           ###   ########.fr       */
+/*   Updated: 2016/11/07 22:04:11 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*readem(char *arg)
 		write(1, "error\n", 6);
 		return (0);
 	}
-	if ((len = read(fd, buf, BUF_SIZE)) == -1)
+	if ((len = read(fd, buf, BUF_SIZE)) <= 0)
 	{
 		write(1, "error\n", 6);
 		return (0);

@@ -1,136 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/21 09:25:16 by wasman            #+#    #+#             */
-/*   Updated: 2016/10/27 13:41:19 by whickey          ###   ########.fr       */
+/*   Created: 2016/11/07 22:00:07 by wasman            #+#    #+#             */
+/*   Updated: 2016/11/08 18:23:37 by whickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FILLIT_H
+# define FILLIT_H
 
 # define BUF_SIZE 547
 
-# include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
+# include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
-struct				subtypes
-{
-	char *name;
-	int count;
-};
-
-void				ft_putchar(char c);
-void				ft_putstr(char const *s);
-void				ft_putnbr(int n);
-int					ft_isalnum(int c);
-int					ft_isalpha(int c);
-int					ft_isascii(int c);
-int					ft_isdigit(int c);
-int					ft_isprint(int c);
-int					ft_isspaces(int c);
-void				ft_putendl(char const *s);
-int					ft_toupper(int c);
-int					ft_tolower(int c);
-size_t				ft_strlen(const char *s);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putchar_fd(char c, int fd);
-void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
-int					ft_atoi(const char *s);
-void				ft_swap(char *a, char *b);
-char				*ft_strrev(char *s);
-void				*ft_memmove(void *dst, const void *src, size_t len);
-void				*ft_memset(void *b, int c, size_t len);
-void				*ft_memcpy(void *dst, const void *src, size_t n);
-void				*ft_memcpy_rev(void *dst, const void *src, size_t n);
-void				ft_bzero(void *s, size_t n);
-void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void				*ft_memchr(const void *s, int c, size_t n);
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
-void				*ft_memalloc(size_t size);
-char				*ft_strdup(const char *s1);
-char				*ft_strcpy(char *dst, const char *src);
-int					ft_strcmp(const char *s1, const char *s2);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strncpy(char *dst, const char *src, size_t len);
-void				ft_strclr(char *s1);
-int					ft_strequ(char const *s1, char const *s2);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
-void				ft_memdel(void **ap);
-char				*ft_strnew(size_t size);
-void				ft_strdel(char **as);
-char				*ft_strcat(char *s1, const char *s2);
-char				*ft_strncat(char *s1, const char *s2, size_t n);
-size_t				ft_strlcat(char *dst, const char *src, size_t size);
-char				*ft_strchr(const char *s, int c);
-char				*ft_strrchr(const char *s, int c);
-char				*ft_strstr(const char *big, const char *little);
-char				*ft_strnstr(const char *b, const char *l, size_t len);
-char				*ft_strtrim(const char *s);
-void				ft_striter(char *s, void (*f)(char *));
-void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-char				*ft_strmap(char const *s, char (*f)(char));
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
-char				*ft_itoa(int n);
-int					ft_isspace(char s);
-int					ft_wordcount(char *s, char c);
-char				*ft_strdtrim(char const *s, char c);
-char				**ft_strsplit(char *s, char c);
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int					ft_isupper(int c);
-int					ft_islower(int c);
 unsigned short		*is_valid(char *str);
 int					classify(unsigned short value);
 unsigned short		ft_btoi(char *str);
 char				*readem(char *arg);
-unsigned short 				is_square(unsigned short tet);
-unsigned short 				is_vertical_straight(unsigned short tet);
-unsigned short 				is_horizontal_straight(unsigned short tet);
-unsigned short 				is_normal_t(unsigned short tet);
-unsigned short 				is_left_t(unsigned short tet);
-unsigned short 				is_right_t(unsigned short tet);
-unsigned short 				is_upside_down_t(unsigned short tet);
-unsigned short 				is_normal_j(unsigned short tet);
-unsigned short 				is_downward_j(unsigned short tet);
-unsigned short 				is_upside_down_j(unsigned short tet);
-unsigned short 				is_upward_j(unsigned short tet);
-unsigned short 				is_normal_z(unsigned short tet);
-unsigned short 				is_rotated_z(unsigned short tet);
-unsigned short 				is_normal_s(unsigned short tet);
-unsigned short 				is_rotated_s(unsigned short tet);
-unsigned short 				is_normal_l(unsigned short tet);
-unsigned short 				is_upward_l(unsigned short tet);
-unsigned short 				is_upside_down_l(unsigned short tet);
-unsigned short 				is_downward_l(unsigned short tet);
-char						*itoa_base(int tet, int base);
-void						print_solution(char **array);
-char						*fix_offset(char *tet_string, int size);
-char						**solve(char **tet_array, unsigned short *bitmap_array, char **tet_solution);
-char						*shift(char *tet_array, int size, int width);
-int							get_width(unsigned short bitmap);
-int							find_first_one_char(char *tet_array);
-int							find_last_one_char(char *tet_array);
-int							is_empty(char **square_str, int size);
-int							first_empty(char **square_str, int size);
+unsigned short		is_square(unsigned short tet);
+unsigned short		is_vertical_straight(unsigned short tet);
+unsigned short		is_horizontal_straight(unsigned short tet);
+unsigned short		is_normal_t(unsigned short tet);
+unsigned short		is_left_t(unsigned short tet);
+unsigned short		is_right_t(unsigned short tet);
+unsigned short		is_upside_down_t(unsigned short tet);
+unsigned short		is_normal_j(unsigned short tet);
+unsigned short		is_downward_j(unsigned short tet);
+unsigned short		is_upside_down_j(unsigned short tet);
+unsigned short		is_upward_j(unsigned short tet);
+unsigned short		is_normal_z(unsigned short tet);
+unsigned short		is_rotated_z(unsigned short tet);
+unsigned short		is_normal_s(unsigned short tet);
+unsigned short		is_rotated_s(unsigned short tet);
+unsigned short		is_normal_l(unsigned short tet);
+unsigned short		is_upward_l(unsigned short tet);
+unsigned short		is_upside_down_l(unsigned short tet);
+unsigned short		is_downward_l(unsigned short tet);
+char				*itoa_base(int tet, int base);
+void				print_solution(char **array);
+char				*fix_offset(char *tet_string, int size);
+char				**solve(char **tet, unsigned short *bit, char **sol);
+char				*shift(char *tet_array, int size, int width);
+int					get_width(unsigned short bitmap);
+int					find_first_one_char(char *tet_array);
+int					find_last_one_char(char *tet_array);
+int					is_empty(char *tet, int size);
+int					first_empty(char **square_str, int size);
+int					fit_char(char *bitmap_str, char **square_str, int size);
+char				**is_fit(char **t, unsigned short *bit, char **sol, int s);
+int					nth_empty(char **square, int size, int ignore);
+int					contact(char **solution, int number, int size);
+char				**generate_shifts(char *tet_array, int size, int width);
+int					num_of_tets(unsigned short *bitmap_array);
+int					conflicts(char **conflicts, int i);
+char				**assign_letters(char **solution);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strnew(size_t size);
+size_t				ft_strlen(const char *s);
+char				*ft_strcpy(char *dst, const char *src);
+int					ft_strcmp(const char *s1, const char *s2);
+void				ft_putstr(char const *s);
+void				ft_putchar(char c);
+void				*ft_memset(void *b, int c, size_t len);
+void				ft_bzero(void *s, size_t n);
 #endif

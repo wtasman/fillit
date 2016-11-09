@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_empty.c                                         :+:      :+:    :+:   */
+/*   conflicts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wasman <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: whickey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 01:48:38 by wasman            #+#    #+#             */
-/*   Updated: 2016/11/06 01:49:43 by wasman           ###   ########.fr       */
+/*   Created: 2016/11/06 01:15:06 by whickey           #+#    #+#             */
+/*   Updated: 2016/11/06 01:02:21 by wasman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	is_empty(char *tet, int size)
+int	conflicts(char **conflicts, int i)
 {
-	int i;
+	int j;
 
-	i = 0;
-	if (!tet || !*tet)
-		return (1);
-	while (i < size * size)
+	j = 0;
+	while (j < 25)
 	{
-		if (tet[i] == '1')
-			return (0);
-		i++;
+		if (conflicts[j][i] == '1')
+			return (1);
+		j++;
 	}
-	return (1);
+	return (0);
 }
